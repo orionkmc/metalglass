@@ -1,5 +1,17 @@
 {
-  "extends": "astro/tsconfigs/strict",
-  "include": [".astro/types.d.ts", "**/*"],
-  "exclude": ["dist"]
+  "extends": "astro/tsconfigs/base", // Usa la configuración estricta recomendada por Astro
+  "include": [".astro/types.d.ts", "**/*"], // Incluye tipos de Astro y todos los archivos del proyecto
+  "exclude": ["dist"], // Excluye la carpeta de salida de build
+  "compilerOptions": {
+    "strictNullChecks": true,
+    "verbatimModuleSyntax": true,
+    "baseUrl": ".", // Define la raíz del proyecto como base
+    "paths": {
+      "@components/*": ["src/components/*"],
+      "@layouts/*": ["src/layouts/*"],
+      "@pages/*": ["src/pages/*"],
+      "@styles/*": ["src/styles/*"],
+      "@assets/*": ["src/assets/*"]
+    }
+  }
 }

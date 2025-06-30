@@ -1,0 +1,61 @@
+---
+const steps = [
+  {
+    number: '01',
+    title: 'Medición y Presupuesto',
+    description: 'Nos cuentas tu idea, coordinamos una visita para tomar medidas exactas y te entregamos un presupuesto detallado. Sin sorpresas.',
+    imageUrl: 'https://metalglassrd.com/wp-content/uploads/2018/09/2.-Deslizante-tubo-rectangular-en-L.jpg',
+    align: 'left',
+  },
+  {
+    number: '02',
+    title: 'Instalación Profesional',
+    description: 'Una vez aprobado el presupuesto, nuestro equipo de instaladores calificados realiza el montaje de tu nueva mampara de forma rápida, limpia y eficiente.',
+    imageUrl: 'https://metalglassrd.com/wp-content/uploads/2019/03/WhatsApp-Image-2018-11-06-at-5.36.33-PM.jpeg',
+    align: 'right',
+  },
+  {
+    number: '03',
+    title: 'Disfruta y Cuenta con Nosotros',
+    description: 'Tu baño está listo para usarse. Además, cuentas con nuestro servicio de postventa para cualquier consulta. Tu tranquilidad es nuestra prioridad.',
+    imageUrl: 'https://metalglassrd.com/wp-content/uploads/2018/09/3.-Mampara-con-puerta-abisagrada-2.jpg',
+    align: 'left',
+  },
+];
+---
+
+<section id="proceso" class="py-20 bg-gray-50">
+  <div class="container mx-auto px-6">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold text-primary">Instalación sin estrés. Resultado impecable.</h2>
+      <p class="text-lg text-secondary mt-4 max-w-3xl mx-auto">
+        Tu tiempo vale, y lo respetamos. Nos encargamos de todo: medición, entrega e instalación. En poco tiempo puedes estar disfrutando de tu nuevo baño, sin complicaciones. Así de simple, así de rápido.
+      </p>
+    </div>
+
+    <div class="space-y-16 md:space-y-24">
+      {steps.map((step) => (
+        <div class={`flex flex-col md:flex-row items-center gap-8 md:gap-16 ${step.align === 'right' ? 'md:flex-row-reverse' : ''}`}>
+          <div class="md:w-1/2">
+            <img src={step.imageUrl} alt={step.title} class="rounded-lg shadow-2xl object-cover w-full h-auto" />
+          </div>
+          <div class="md:w-1/2">
+            <span class="text-7xl font-extrabold text-gray-200">{step.number}</span>
+            <h3 class="text-2xl font-bold text-primary mt-[-1.5rem] ml-1">{step.title}</h3>
+            <p class="text-secondary mt-4 text-lg">{step.description}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="text-center mt-20">
+      <a
+        href="https://wa.me/18095398378?text=Saludos%2C%20deseo%20un%20informaci%C3%B3n%20sobre%20mamparas%20de%20baño."
+        target="_blank"
+        class="bg-accent hover:bg-blue-400 text-white font-bold py-4 px-8 rounded-full transition-transform duration-300 ease-in-out transform hover:scale-105 shadow-lg"
+      >
+        Agenda tu instalación hoy mismo
+      </a>
+    </div>
+  </div>
+</section>

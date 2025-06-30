@@ -1,0 +1,52 @@
+---
+const navLinks = [
+  { text: 'Beneficios', href: '#beneficios' },
+  { text: 'Modelos', href: '#modelos' },
+  { text: 'Proceso', href: '#proceso' },
+  { text: 'Contacto', href: '#contacto' },
+];
+---
+<header id="header" class="sticky top-0 z-50 transition-all duration-300 bg-transparent">
+  <div class="container mx-auto px-6 py-4">
+    <div class="flex items-center justify-between">
+      <!-- Logo -->
+      <a href="#hero" aria-label="Página de inicio de MetalGlass">
+        <img
+          src="https://metalglassrd.com/wp-content/uploads/2017/04/Logo_METALGLASS_WEB.png"
+          alt="Logotipo de MetalGlass"
+          class="h-10 w-auto"
+        />
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center space-x-8">
+        {navLinks.map(link => (
+          <a href={link.href} class="text-gray-600 hover:text-primary transition-colors duration-300 font-medium">{link.text}</a>
+        ))}
+      </nav>
+
+      <!-- CTA Siempre visible -->
+      <div class="flex items-center">
+        <a
+          href="https://wa.me/18095398378?text=Saludos%2C%20deseo%20un%20informaci%C3%B3n%20sobre%20mamparas%20de%20baño."
+          target="_blank"
+          class="bg-primary hover:bg-primary-dark text-white font-bold py-2 px-6 rounded-full transition-transform duration-300 ease-in-out transform hover:scale-105"
+        >
+          Solicitar Presupuesto
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  const header = document.getElementById('header');
+  window.addEventListener('scroll', () => {
+    if (!header) return;
+    if (window.scrollY > 10) {
+      header.classList.add('bg-white/80', 'shadow-md', 'backdrop-blur-sm');
+    } else {
+      header.classList.remove('bg-white/80', 'shadow-md', 'backdrop-blur-sm');
+    }
+  });
+</script>

@@ -1,0 +1,104 @@
+---
+const formId = 'metalglass-contact-form';
+---
+
+<section id="contacto" class="py-20 bg-gray-50">
+  <div class="container mx-auto px-6" client:load>
+    <script type="module">
+      const form = document.getElementById('${formId}');
+      const successBox = document.getElementById('${formId}-success');
+      const reloadBtn = document.getElementById('${formId}-reset');
+
+      if (form && successBox) {
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const button = form.querySelector('button[type="submit"]');
+          if (button) {
+            button.disabled = true;
+            button.textContent = 'Enviando...';
+          }
+
+          setTimeout(() => {
+            form.classList.add('hidden');
+            successBox.classList.remove('hidden');
+            if (button) {
+              button.disabled = false;
+              button.textContent = 'Pide tu presupuesto sin compromiso';
+            }
+            form.reset();
+          }, 1500);
+        });
+
+        if (reloadBtn) {
+          reloadBtn.addEventListener('click', () => {
+            form.classList.remove('hidden');
+            successBox.classList.add('hidden');
+          });
+        }
+      }
+    </script>
+
+    <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
+      <!-- Información lateral -->
+      <div class="text-center lg:text-left mb-12 lg:mb-0">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary">Garantía de satisfacción y estilo</h2>
+        <p class="text-lg text-secondary mt-4 max-w-md mx-auto lg:mx-0">
+          Estamos tan seguros de la calidad de nuestras mamparas, que te damos garantía por escrito. Si no te enamoras del resultado, lo solucionamos. Porque no vendemos solo vidrio: entregamos confianza, confort y diseño a medida.
+        </p>
+        <img
+          src="https://metalglassrd.com/wp-content/uploads/2019/03/WhatsApp-Image-2019-02-11-at-11.07.11-AM.jpeg"
+          alt="Baño moderno con mampara MetalGlass"
+          class="mt-8 rounded-lg shadow-lg mx-auto lg:mx-0"
+        />
+      </div>
+
+      <!-- Formulario -->
+      <div class="bg-white p-8 rounded-lg shadow-2xl">
+        <form id={formId} class="space-y-6">
+          <div>
+            <label for="name" class="block text-sm font-medium text-gray-700">Nombre</label>
+            <input type="text" name="name" id="name" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary" />
+          </div>
+          <div>
+            <label for="email" class="block text-sm font-medium text-gray-700">Correo electrónico</label>
+            <input type="email" name="email" id="email" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary" />
+          </div>
+          <div>
+            <label for="phone" class="block text-sm font-medium text-gray-700">Teléfono</label>
+            <input type="tel" name="phone" id="phone" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary" />
+          </div>
+          <div>
+            <label for="type" class="block text-sm font-medium text-gray-700">¿Qué tipo de mampara estás buscando?</label>
+            <select name="type" id="type" required class="mt-1 block w-full px-3 py-2 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
+              <option value="" disabled selected>Selecciona una opción</option>
+              <option>Mampara Corrediza</option>
+              <option>Panel Fijo</option>
+              <option>Mampara Abatible</option>
+              <option>Aún no lo sé, necesito asesoramiento</option>
+            </select>
+          </div>
+          <div>
+            <label for="comments" class="block text-sm font-medium text-gray-700">Preguntas adicionales</label>
+            <textarea name="comments" id="comments" rows="4" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary"></textarea>
+          </div>
+          <div>
+            <button type="submit" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-full shadow-sm text-lg font-bold text-white bg-accent hover:bg-blue-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent transition-colors duration-300">
+              Pide tu presupuesto sin compromiso
+            </button>
+          </div>
+        </form>
+
+        <!-- Mensaje de éxito -->
+        <div id={`${formId}-success`} class="hidden text-center">
+          <h2 class="text-3xl font-bold text-primary mb-4">¡Gracias por tu consulta!</h2>
+          <p class="text-secondary text-lg">
+            Hemos recibido tu solicitud. Nos pondremos en contacto contigo a la brevedad para asesorarte.
+          </p>
+          <button id={`${formId}-reset`} class="mt-8 bg-primary hover:bg-primary-dark text-white font-bold py-3 px-6 rounded-full transition-colors duration-300">
+            Realizar otra consulta
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

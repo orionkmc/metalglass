@@ -1,0 +1,61 @@
+---
+const benefitsData = [
+  {
+    icon: 'quality',
+    title: 'Belleza que Dura',
+    description: 'Olvídate del moho y las manchas. Nuestras mamparas están diseñadas para resistir y lucir impecables todos los días.',
+  },
+  {
+    icon: 'design',
+    title: 'Funcionalidad Inteligente',
+    description: 'Sistemas de apertura seguros que se adaptan a cualquier espacio para tu máxima comodidad y practicidad.',
+  },
+  {
+    icon: 'service',
+    title: 'Mantenimiento Sencillo',
+    description: 'Gracias a sus materiales premium, son fáciles de limpiar para que tu baño esté siempre reluciente sin esfuerzo.',
+  },
+];
+
+const icons = {
+  design: `<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
+  </svg>`,
+  quality: `<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+  </svg>`,
+  service: `<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+  </svg>`,
+};
+---
+
+<section id="beneficios" class="py-20 bg-gray-50">
+  <div class="container mx-auto px-6">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-primary">Funcionalidad inteligente, belleza que dura</h2>
+      <p class="text-lg text-secondary mt-4 max-w-3xl mx-auto">
+        Olvídate del moho, las manchas y los malos olores. Nuestras mamparas están diseñadas para durar, resistir y lucir impecables todos los días. Porque belleza y practicidad pueden –y deben– ir de la mano.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      {benefitsData.map((benefit) => (
+        <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-2">
+          <div class="mb-4" set:html={icons[benefit.icon]} />
+          <h3 class="text-xl font-bold text-primary mb-2">{benefit.title}</h3>
+          <p class="text-secondary">{benefit.description}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="text-center mt-12">
+      <a
+        href="https://wa.me/18095398378?text=Saludos%2C%20deseo%20un%20informaci%C3%B3n%20sobre%20mamparas%20de%20baño."
+        target="_blank"
+        class="bg-primary hover:bg-primary-dark text-white font-bold py-3 px-8 rounded-full transition-transform duration-300 ease-in-out transform hover:scale-105 shadow-lg">
+        Descubre cómo se adapta a tu baño
+      </a>
+    </div>
+  </div>
+</section>

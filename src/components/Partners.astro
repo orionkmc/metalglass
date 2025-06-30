@@ -1,0 +1,20 @@
+---
+const partners = ['CrystalClear', 'AluPro', 'DuraSeal', 'Moderno', 'AquaFrame'];
+---
+
+<div class="bg-gray-50 py-16">
+  <div class="container mx-auto px-6">
+    <h3 class="text-center text-gray-500 text-sm font-bold tracking-widest uppercase mb-8">
+      Trabajamos con las mejores marcas
+    </h3>
+    <div class="grid grid-cols-2 md:grid-cols-5 gap-8 items-center">
+      {partners.map((name) => (
+        <div class="flex justify-center items-center">
+          <span class="text-2xl font-semibold text-gray-400 filter grayscale hover:grayscale-0 transition-all duration-300 cursor-pointer">
+            {name}
+          </span>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>

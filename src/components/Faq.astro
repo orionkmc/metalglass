@@ -1,0 +1,86 @@
+---
+const faqData = [
+  {
+    question: '¿Cuánto tiempo demora la instalación?',
+    answer: 'Una instalación estándar de mampara de baño suele demorar entre 2 y 4 horas. Nos aseguramos de trabajar de manera eficiente y limpia para minimizar las molestias.',
+  },
+  {
+    question: '¿Qué garantía tienen las mamparas?',
+    answer: 'Ofrecemos una garantía completa en los materiales y en la instalación. Además, contamos con una garantía de satisfacción: si no te enamoras del resultado, lo solucionamos. Tu tranquilidad es nuestra prioridad.',
+  },
+  {
+    question: '¿Cómo debo limpiar y mantener mi mampara?',
+    answer: 'Recomendamos usar un paño suave con agua y jabón neutro. Evita productos abrasivos. Para una limpieza más profunda, el vinagre blanco diluido es una excelente opción para eliminar restos de cal.',
+  },
+  {
+    question: '¿Realizan trabajos a medida?',
+    answer: '¡Sí! Es nuestra especialidad. Nos adaptamos a cualquier espacio, por complicado que parezca. Realizamos mediciones precisas para garantizar un ajuste perfecto.',
+  },
+];
+---
+
+<section id="faq" class="py-20 bg-white">
+  <div class="container mx-auto px-6">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-primary">Preguntas Frecuentes</h2>
+      <p class="text-lg text-secondary mt-4 max-w-2xl mx-auto">
+        Resolvemos tus dudas para que tomes la mejor decisión.
+      </p>
+    </div>
+    <div class="max-w-3xl mx-auto" client:load>
+      <script type="module">
+        const faqItems = document.querySelectorAll('[data-faq-item]');
+        let openIndex = 0;
+
+        function toggleFaq(index) {
+          faqItems.forEach((item, i) => {
+            const answer = item.querySelector('[data-faq-answer]');
+            const icon = item.querySelector('[data-faq-icon]');
+            if (i === index && answer) {
+              const isOpen = item.classList.contains('open');
+              item.classList.toggle('open');
+              answer.style.maxHeight = isOpen ? '0px' : answer.scrollHeight + 'px';
+              icon.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
+            } else {
+              item.classList.remove('open');
+              if (answer) answer.style.maxHeight = '0px';
+              if (icon) icon.style.transform = 'rotate(0deg)';
+            }
+          });
+        }
+
+        faqItems.forEach((item, index) => {
+          const button = item.querySelector('[data-faq-toggle]');
+          if (button) {
+            button.addEventListener('click', () => toggleFaq(index));
+          }
+        });
+
+        // Inicializa primer item abierto
+        toggleFaq(openIndex);
+      </script>
+
+      {faqData.map((item, index) => (
+        <div class="border-b border-gray-200 py-4 transition-all" data-faq-item>
+          <button
+            data-faq-toggle
+            class="w-full flex justify-between items-center text-left text-lg font-semibold text-primary focus:outline-none"
+          >
+            <span>{item.question}</span>
+            <span data-faq-icon class="transition-transform duration-300">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </span>
+          </button>
+          <div
+            data-faq-answer
+            class="overflow-hidden transition-all duration-500 ease-in-out max-h-0 mt-0"
+          >
+            <p class="text-secondary pr-4 mt-4">{item.answer}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
